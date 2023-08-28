@@ -5,10 +5,11 @@ permissions:
   contents: write
 
 # 推送的tag中以v开头则执行此action
-on:
-  push:
-    tags:
-      - "v*"
+# on:
+#   push:
+#     tags:
+#       - "v*"
+on: [push]
 
 jobs:
   build-release:
