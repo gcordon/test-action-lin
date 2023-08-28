@@ -28,7 +28,7 @@ jobs:
         run: npm install
       # 执行构建命令
       - name: "Install dependencies"
-        run: npm run build-rollup:prod
+        run: npm run build
       # 将dist目录打成zip包
       - name: Zip Dist
         run: zip -r dist.zip dist
