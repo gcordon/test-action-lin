@@ -7,19 +7,18 @@ on:
 jobs:
 
   build:
-
+  
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install Dependencies
-      run: npm install
+    - name: Install and Build
+      run: |
+        npm install
+        npm run build
 
-    - name: Build
-      run: npm run build
-
-    - name: Archive Production Artifact
+    - name: Archive Production Artifacts  
       uses: actions/upload-artifact@v2
       with:
         name: dist
@@ -41,6 +40,6 @@ jobs:
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
-      with:
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+      with: 
+        personal_token: ${{ secrets.GITHUBTOKEN }}
         publish_dir: ./dist
